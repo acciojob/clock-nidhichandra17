@@ -1,14 +1,16 @@
-//your JS code here. If required.
-let p = document.getElementById("timer");
-let d = new Date();
-let c = d.getDay();
-let a = d.getDate();
-let b = d.getFullYear();
-
-let k = d.getHours();
-let q = d.getMinutes();
- let h = setInterval(() => {
-    let z = d.getSeconds();
-}, 1000);
-let s = h;
-console.log(p.innerText = c+"/"+a+"/"+b+", "+k+":"+q+":"+s+" Am");
+function livetime() {
+  let date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+  let cudate = `${month}/${day}/${year}`;
+  document.getElementById('timer').textContent = cudate + ', ' + time;
+}
+function startTimer() {
+  livetime();
+  setInterval(livetime, 1000); 
+}
+ 
+window.addEventListener('load', startTimer);
+   
